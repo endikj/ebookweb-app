@@ -32,7 +32,7 @@ Route::controller(LoginController::class)->group(function(){
 
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::group(['middleware' => ['cekUserLogin:1,2']], function(){
+    Route::group(['middleware' => ['checkUserRole:1,2']], function(){
         Route::resource('dashboard',DashboardController::class)->names([
             'index' => 'dashboard.index',
         ]);
@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth']], function(){
         ]);
     });
     
-    Route::group(['middleware' => ['cekUserLogin:3']], function(){
+    Route::group(['middleware' => ['checkUserRole:3']], function(){
         Route::resource('home',PembacaEbookController::class);
     });
             // 'create' => 'superadmin.create',
